@@ -28,12 +28,12 @@ db = client["ISIS2304D25202610"]
 def inicio():
     return {"estado": "API funcionando correctamente"}
 
-@app.get('/bares/{bar_id}/comentarios')
+@app.get('/api/bares/{bar_id}/comentarios')
 def get_comentarios(bar_id: int):
-    comentarios = None  # TODO: completar
+    comentarios = list(db.comentarios.find({"bar_id": bar_id}, {"_id": 0}))  # TODO: completar
     return comentarios
 
-@app.post('/bares/{bar_id}/comentarios')
+@app.post('/api/bares/{bar_id}/comentarios')
 def post_comentario(bar_id: int, datos: dict):
     datos['bar_id'] = bar_id
     datos['fecha']  = datetime.now().isoformat()
