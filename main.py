@@ -28,12 +28,12 @@ db = client["ISIS2304D25202610"]
 def inicio():
     return {"estado": "API funcionando correctamente"}
 
-@app.get('/api/bares/{bar_id}/comentarios')
+@app.get('/api/bares/{bar_id}/comentario')
 def get_comentarios(bar_id: int):
     comentarios = list(db.comentarios.find({"bar_id": bar_id}, {"_id": 0}))  # TODO: completar
     return comentarios
 
-@app.post('/api/bares/{bar_id}/comentarios')
+@app.post('/api/bares/{bar_id}/comentario')
 def post_comentario(bar_id: int, datos: dict):
     datos['bar_id'] = bar_id
     datos['fecha']  = datetime.now().isoformat()
@@ -42,7 +42,17 @@ def post_comentario(bar_id: int, datos: dict):
 
 # TODO: implementar GET /bares/{bar_id}/eventos
 # Debe retornar todos los eventos del bar desde la colección 'eventos'
+@app.get('/api/bares/{bar_id}/eventos')
+def get_eventos(bar_id: int):
+    eventos = list(db.eventos.find({"bar_id": bar_id}, {"_id": 0}))  # TODO: completar
+    return eventos
 
 # TODO: implementar POST /bares/{bar_id}/eventos  
 # Debe insertar el evento en la colección 'eventos'
 # Recuerde agregar bar_id y fecha_creacion al documento antes de insertar
+@app.post('/api/bares/{bar_id}/eventos')
+def post_evento(bar_id: int, datos: dict):
+    datos['bar_id'] = bar_id
+    datos['fecha']  = datetime.now().isoformat()
+    # TODO: completar
+    return {'mensaje': 'Evento guardado'}
