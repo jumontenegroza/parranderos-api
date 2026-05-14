@@ -37,6 +37,7 @@ def get_comentarios(bar_id: int):
 def post_comentario(bar_id: int, datos: dict):
     datos['bar_id'] = bar_id
     datos['fecha']  = datetime.now().isoformat()
+    db.comentarios.insert_one(datos)[cite:233]
     # TODO: completar
     return {'mensaje': 'Comentario guardado'}
 
@@ -53,6 +54,7 @@ def get_eventos(bar_id: int):
 @app.post('/api/bares/{bar_id}/eventos')
 def post_evento(bar_id: int, datos: dict):
     datos['bar_id'] = bar_id
-    datos['fecha']  = datetime.now().isoformat()
+    datos['fecha']  = datetime.now().isoformat() [cite: 237]
+    db.eventos.insert_one(datos) [cite:237]
     # TODO: completar
     return {'mensaje': 'Evento guardado'}
