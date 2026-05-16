@@ -16,8 +16,6 @@ app.add_middleware(
 #os.environ para despliegue. Descomente cuando ya probó todo local.
 client = MongoClient(os.environ["MONGO_URI"])
 # TODO: conectarse al cluster Admonsis  
-client = MongoClient("mongodb://ISIS2304D25202610:LtZUiR7MyQo6@157.253.236.88:8087/?authSource=admin")
-
 #client = MongoClient("")
 # TODO: conectarse a la base de datos Admonsis  
 # db = client["ISIS*******"]
@@ -37,7 +35,7 @@ def get_comentarios(bar_id: int):
 def post_comentario(bar_id: int, datos: dict):
     datos['bar_id'] = bar_id
     datos['fecha']  = datetime.now().isoformat()
-    db.comentarios.insert_one(datos)[cite:233]
+    db.comentarios.insert_one(datos)
     # TODO: completar
     return {'mensaje': 'Comentario guardado'}
 
@@ -54,7 +52,7 @@ def get_eventos(bar_id: int):
 @app.post('/api/bares/{bar_id}/eventos')
 def post_evento(bar_id: int, datos: dict):
     datos['bar_id'] = bar_id
-    datos['fecha']  = datetime.now().isoformat() [cite: 237]
-    db.eventos.insert_one(datos) [cite:237]
+    datos['fecha']  = datetime.now().isoformat()
+    db.eventos.insert_one(datos)
     # TODO: completar
     return {'mensaje': 'Evento guardado'}
