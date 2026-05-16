@@ -17,6 +17,8 @@ app.add_middleware(
 client = MongoClient(os.environ["MONGO_URI"])
 # TODO: conectarse al cluster Admonsis  
 #client = MongoClient("")
+#cliente que se debe usar cuando se haga prueba local
+#client = MongoClient("mongodb://ISIS2304D25202610:LtZUiR7MyQo6@157.253.236.88:8087/?authSource=admin")
 # TODO: conectarse a la base de datos Admonsis  
 # db = client["ISIS*******"]
 db = client["ISIS2304D25202610"]
